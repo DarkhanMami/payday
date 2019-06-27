@@ -72,32 +72,7 @@ class ApplicationViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, Gener
             permission_classes = [IsAuthenticated]
         return [permission() for permission in permission_classes]
 
-    # @action(methods=['get'], detail=True)
-    # def journal(self, request, *args, **kwargs):
-    #     course = self.get_object()
-    #     result = list()
-    #     students = list(course.students.all())
-    #     if request.user.type == "student":
-    #         students = [request.user]
-    #     for s in students:
-    #         obj = {
-    #             "student": UserSerializer(instance=s).data,
-    #             "journal": []
-    #         }
-    #         for l in course.lessons.all():
-    #             try:
-    #                 attendance = models.Attendance.objects.get(lesson=l, student=s)
-    #             except:
-    #                 attendance = None
-    #             obj["journal"].append({
-    #                 "lesson_name": l.name,
-    #                 "grade": attendance.grade if attendance else 0,
-    #                 "attendance": attendance.attendance if attendance else False
-    #             })
-    #         result.append(obj)
-    #     return Response(result, status=status.HTTP_201_CREATED)
-
-    @action(methods=['post'], detail=True)
+    @action(methods=['post'], detail=False)
     def create_application(self, request, *args, **kwargs):
         serializer = ApplicationCreateSerializer(data=request.data)
         if serializer.is_valid():
