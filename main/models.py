@@ -58,6 +58,7 @@ class User(AbstractBaseUser):
     name = models.CharField(max_length=1024, blank=True, default="")
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
+    limit = models.IntegerField(default=300, blank=False, null=False, db_index=True, verbose_name=_('Запрашиваемый лимит'))
 
     CLIENT = "Клиент"
     ADMINISTRATOR = "Администратор"

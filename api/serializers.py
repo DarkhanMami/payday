@@ -9,6 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
             'email',
             'is_admin',
             'type',
+            'limit',
             'last_login'
         )
         model = models.User
