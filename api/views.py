@@ -48,15 +48,15 @@ class ApplicationViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, Gener
 
     filter_backends = (filters.DjangoFilterBackend,)
     filter_fields = ('approved',)
-    queryset = models.Application.objects.all()
+    queryset = models.Application.objects.all().order_by('-timestamp')
 
     def get_serializer_context(self):
         return {'request': self.request}
 
     def get_queryset(self):
         if self.request.user.type == User.CLIENT:
-            return models.Application.objects.filter(user=self.request.user)
-        return models.Application.objects.all()
+            return models.Application.objects.filter(user=self.request.user).order_by('-timestamp')
+        return models.Application.objects.all().order_by('-timestamp')
 
     def get_serializer_class(self):
         if self.action == 'create_application':
