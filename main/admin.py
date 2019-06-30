@@ -62,6 +62,6 @@ admin.site.unregister(Group)
 
 @admin.register(Application)
 class ApplicationAdmin(admin.ModelAdmin):
-    list_display = ('user', 'money', 'timestamp', 'approved')
+    list_display = ('user', 'money', 'timestamp', 'approved', 'noticed')
     search_fields = ('used',)
     list_filter = ('approved',)

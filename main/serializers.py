@@ -19,3 +19,9 @@ class ApplicationCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Application
         fields = ('money',)
+
+
+class ApplicationUpdateSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Application
+        fields = ('pk', 'noticed',)

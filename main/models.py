@@ -98,6 +98,7 @@ class Application(models.Model):
     money = models.IntegerField(default=0, blank=False, null=False, db_index=True, verbose_name=_('Запрашиваемая сумма'))
     timestamp = models.DateTimeField(blank=False, null=False, auto_now_add=True, verbose_name=_('Дата заявки'))
     approved = models.BooleanField(default=False, verbose_name=_('Одобрено администратором'))
+    noticed = models.BooleanField(default=False, verbose_name=_('Отправлено уведомление'))
 
     class Meta:
         verbose_name = _("Заявка")
