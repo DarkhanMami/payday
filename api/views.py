@@ -88,5 +88,6 @@ class ApplicationViewSet(mixins.RetrieveModelMixin, mixins.ListModelMixin, Gener
         application = models.Application.objects.get(pk=request.data["pk"])
         if serializer.is_valid():
             application.noticed = True
+            application.save()
             return Response(self.get_serializer(application, many=False).data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
