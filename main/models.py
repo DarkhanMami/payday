@@ -96,6 +96,8 @@ class User(AbstractBaseUser):
 class Application(models.Model):
     user = models.ForeignKey(User, blank=False, null=False, on_delete=models.CASCADE, related_name='users', verbose_name=_('ФИО заявителя'))
     money = models.IntegerField(default=0, blank=False, null=False, db_index=True, verbose_name=_('Запрашиваемая сумма'))
+    comission = models.FloatField(default=0, blank=False, null=False, db_index=True, verbose_name=_('Комиссия'))
+    comission_to_job = models.FloatField(default=0, blank=False, null=False, db_index=True, verbose_name=_('Комиссия работодателя'))
     timestamp = models.DateTimeField(blank=False, null=False, auto_now_add=True, verbose_name=_('Дата заявки'))
     approved = models.BooleanField(default=False, verbose_name=_('Одобрено администратором'))
     noticed = models.BooleanField(default=False, verbose_name=_('Отправлено уведомление'))
